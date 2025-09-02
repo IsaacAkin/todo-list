@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Todo List</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="sidebar">
+        <h2>To-do</h2>
+        <button class="new-task-btn">+New Task</button>
+        <nav class="tasks-nav">
+          <button>Today</button>
+          <button>Upcoming</button>
+          <button>Completed</button>
+          <button>Filter By...</button>
+        </nav>
+        <h2>Projects</h2>
+        <button class="new-project-btn">+New Project</button>
+        <nav class="projects-nav"></nav>
+      </div>
+      <div class="main-content">
+        <div class="header">
+          <h1>Project Title</h1>
+        </div>
+        <div class="tasks">
+          <!-- <div>1</div>
+          <div>2</div>
+          <div>3</div>
+          <div>4</div>
+          <div>5</div>
+          <div>6</div> -->
+        </div>
+      </div>
+    </div>
+    <dialog class="task-dialog">
+      <form action="">
+        <div class="title-container">
+          <!-- <label for="title"><span aria-label="required">*</span>Title:</label> -->
+          <input
+            type="text"
+            name="title"
+            id="title"
+            autocomplete="off"
+            placeholder="Task Title"
+            required
+          />
+        </div>
+
+        <div class="priority-container">
+          <p>Priority:</p>
+          <input type="radio" name="priority" id="radio-low" value="Low" />
+          <label for="radio-low">Low</label>
+          <input
+            type="radio"
+            name="priority"
+            id="radio-medium"
+            value="Medium"
+          />
+          <label for="radio-medium">Medium</label>
+          <input type="radio" name="priority" id="radio-high" value="High" />
+          <label for="radio-high">High</label>
+        </div>
+
+        <div class="date-and-project-container">
+          <div class="date-container">
+            <label for="date">Date:</label>
+            <input type="date" name="date" id="date" required />
+          </div>
+          <div class="project-container">
+            <select name="projects" id="projects-dropdown">
+              <!-- <option value="All Projects">All Projects</option> -->
+            </select>
+          </div>
+        </div>
+
+        <div class="notes-container">
+          <textarea
+            name="notes"
+            id="notes"
+            cols="30"
+            rows="10"
+            placeholder="Enter text here..."
+          ></textarea>
+        </div>
+
+        <div class="button-container">
+          <button type="button" class="submit-task-btn">Submit</button>
+          <button type="button" class="close-task-dialog">Cancel</button>
+        </div>
+      </form>
+    </dialog>
+    <dialog class="project-dialog">
+      <form action="">
+        <div class="project-name-container">
+          <input
+            type="text"
+            name="project-name"
+            id="project-name"
+            autocomplete="off"
+            placeholder="Enter project name"
+            required
+          />
+        </div>
+
+        <div class="button-container">
+          <button type="button" class="submit-project-btn">Submit</button>
+          <button type="button" class="close-project-dialog">Cancel</button>
+        </div>
+      </form>
+    </dialog>
+  </body>
+</html>
