@@ -9,7 +9,7 @@
     <div class="container">
       <div class="sidebar">
         <h2>To-do</h2>
-        <button class="new-task-btn">+New Task</button>
+        <!-- <button class="new-task-btn">+New Task</button> -->
         <nav class="tasks-nav">
           <button>Today</button>
           <button>Upcoming</button>
@@ -24,13 +24,11 @@
         <div class="header">
           <h1>Project Title</h1>
         </div>
-        <div class="tasks">
-          <!-- <div>1</div>
-          <div>2</div>
-          <div>3</div>
-          <div>4</div>
-          <div>5</div>
-          <div>6</div> -->
+        <div class="tasks-container">
+          <div class="new-task-btn-container">
+            <button class="new-task-btn">+New Task</button>
+          </div>
+          <div class="tasks"></div>
         </div>
       </div>
     </div>
@@ -63,17 +61,15 @@
           <label for="radio-high">High</label>
         </div>
 
-        <div class="date-and-project-container">
-          <div class="date-container">
-            <label for="date">Date:</label>
-            <input type="date" name="date" id="date" required />
-          </div>
-          <div class="project-container">
-            <select name="projects" id="projects-dropdown">
-              <!-- <option value="All Projects">All Projects</option> -->
-            </select>
-          </div>
+        <div class="date-container">
+          <label for="date">Date:</label>
+          <input type="date" name="date" id="date" required />
         </div>
+        <!-- <div class="project-container">
+            <select name="projects" id="projects-dropdown">
+              <option value="All Projects">All Projects</option>
+            </select>
+          </div> -->
 
         <div class="notes-container">
           <textarea
@@ -88,6 +84,60 @@
         <div class="button-container">
           <button type="button" class="submit-task-btn">Submit</button>
           <button type="button" class="close-task-dialog">Cancel</button>
+        </div>
+      </form>
+    </dialog>
+    <dialog class="edit-task-dialog">
+      <form action="">
+        <div class="title-container">
+          <input
+            type="text"
+            name="title"
+            id="new-title"
+            autocomplete="off"
+            placeholder="Task Title"
+            required
+          />
+        </div>
+
+        <div class="priority-container">
+          <p>Priority:</p>
+          <input type="radio" name="priority" id="new-radio-low" value="Low" />
+          <label for="new-radio-low">Low</label>
+          <input
+            type="radio"
+            name="priority"
+            id="new-radio-medium"
+            value="Medium"
+          />
+          <label for="new-radio-medium">Medium</label>
+          <input
+            type="radio"
+            name="priority"
+            id="new-radio-high"
+            value="High"
+          />
+          <label for="new-radio-high">High</label>
+        </div>
+
+        <div class="date-container">
+          <label for="new-date">Date:</label>
+          <input type="date" name="date" id="new-date" required />
+        </div>
+
+        <div class="notes-container">
+          <textarea
+            name="notes"
+            id="new-notes"
+            cols="30"
+            rows="10"
+            placeholder="Enter text here..."
+          ></textarea>
+        </div>
+
+        <div class="button-container">
+          <button type="button" class="submit-edit-btn">Submit</button>
+          <button type="button" class="close-edit-dialog">Cancel</button>
         </div>
       </form>
     </dialog>
