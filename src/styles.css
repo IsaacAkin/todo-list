@@ -18,6 +18,10 @@ body {
     border: 5px solid red;
 }
 
+div>.new-task-btn {
+    justify-self: center;
+}
+
 .new-task-btn,
 .new-project-btn {
     border: 2px solid orange;
@@ -56,11 +60,29 @@ nav>button:hover {
     text-align: center;
 }
 
-.tasks {
+.tasks-container {
+    border: 4px solid lightcoral;
+    display: grid;
+    grid-template-rows: 0fr 1fr;
+}
+
+.new-task-btn-container {
+    border: 4px solid lightgreen;
+    justify-self: center;
+}
+
+/* .tasks {
     border: 4px solid blue;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(2, 1fr);
+    gap: 5px;
+} */
+.tasks {
+    border: 4px solid blue;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
     gap: 5px;
 }
 
@@ -70,12 +92,11 @@ nav>button:hover {
     margin: 10px;
 
     display: flex;
-    flex-direction: column;
     font-size: 18px;
-    font-weight: bolder;
     text-align: center;
-    justify-content: center;
+    justify-content: space-around;
     padding: 15px;
+    gap: 10px;
     box-shadow: 1px 1px 1px 1px lightgrey;
 }
 
@@ -106,7 +127,6 @@ input {
 }
 
 
-.date-and-project-container,
 .date-container,
 .project-container {
     display: flex;
@@ -148,12 +168,14 @@ input {
 }
 
 .button-container>button[class="submit-project-btn"],
-.button-container>button[class="submit-task-btn"] {
+.button-container>button[class="submit-task-btn"],
+.cards>button[class="edit-task"] {
     background-color: lightgreen;
     margin-bottom: 15px;
 }
 
 .button-container>button[class="close-project-dialog"],
-.button-container>button[class="close-task-dialog"] {
+.button-container>button[class="close-task-dialog"],
+.cards>button[class="delete-task"] {
     background-color: lightcoral;
 }
