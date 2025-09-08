@@ -24,6 +24,10 @@ export class Project {
         this.todos.push(Todo);
     }
 
+    editTask(task, title, priority, dueDate, notes) {
+        task.editTodo(title, priority, dueDate, notes);
+    }
+
     deleteTodo(todoTitle) {
         // finds the projects index in the array and then deletes it
         // const todoToDelete = this.todos.findIndex(todo => todo.id === todoId);
@@ -61,4 +65,10 @@ export function deleteProject(projectId) {
     // finds the projects index in the array and then deletes it
     const projectToDelete = projects.findIndex(project => project.id === projectId);
     projects.splice(projectToDelete, 1);
+}
+
+export function findTask(projectId, taskId) {
+    const proj = projects.find(project => project.id === projectId);
+    // const proj = projects.find(project => project.projectName === projectId);
+    return proj.todos.find(task => task.id === taskId);
 }
