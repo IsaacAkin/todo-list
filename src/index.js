@@ -1,14 +1,16 @@
 import './styles.css';
-import { projects, Project, createProject, displayTodos } from './projects';
-import { Todo, createTask } from './todo';
+import { projects, Project, createProject, displayTodos, findProjectByName } from './projects';
+import { createTask } from './todo';
 import { listeners, displayProjects } from './event-listeners';
-import { pageElements } from "./page-elements";
 
 function userInteraction() {
-    const el = new pageElements();
     let completedTodos = [];
 
-    createProject('All Projects');
+    createProject('All Tasks');
+    const allTasks = findProjectByName('All Tasks');
+    // const task = createTask('Test', 'Medium', new Date().toLocaleDateString(), 'test test test');
+    const task = createTask('Test', 'Medium', '2025-09-03', 'test test test');
+    allTasks.addTask(task);
     displayProjects();
     listeners;
 }
