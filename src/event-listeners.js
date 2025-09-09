@@ -28,7 +28,7 @@ const taskDialog = document.querySelector('.task-dialog');
 const editTaskDialog = document.querySelector('.edit-task-dialog');
 const closeTaskDialog = document.querySelector('.close-task-dialog');
 const editTask = document.querySelector('.edit-task');
-const deleteTask = document.querySelector('.delete-task');
+const deleteTaskBtn = document.querySelector('.delete-task');
 const cards = document.querySelector('.cards');
 
 // NEW TASK FORM
@@ -38,6 +38,15 @@ const radioMedium = document.querySelector('#radio-medium');
 const radioHigh = document.querySelector('#radio-high');
 const dateInput = document.querySelector('#date');
 const notesInput = document.querySelector('#notes');
+
+// EDIT TASK FORM
+const newTitleInput = document.querySelector('#new-title');
+const newRadioLow = document.querySelector('#new-radio-low');
+const newRadioMedium = document.querySelector('#new-radio-medium');
+const newRadioHigh = document.querySelector('#new-radio-high');
+const newDateInput = document.querySelector('#new-date');
+const newDropdown = document.querySelector('#new-projects-dropdown');
+const newNotesInput = document.querySelector('#new-notes');
 
 export const listeners = (() => {
 
@@ -64,6 +73,7 @@ export const listeners = (() => {
         resetForm();
     });
 
+
     // PROJECTS
     newProjectBtn.addEventListener('click', () => {
         projectDialog.showModal();
@@ -87,9 +97,21 @@ export const listeners = (() => {
         })
     }
 
+    tasksContainer.addEventListener('click', (e) => {
+        if (e.target.classList.contains('edit-task')) {
+            editTaskDialog.showModal();
+            storeEditInfo(e);
+        }
+
+        if (e.target.classList.contains('delete-task')) {
+            deleteTask(e);
+            displayTasks();
+        }
+    });
+
 })();
 
-export const displayProjects = () => {    
+export const displayProjects = () => {
     projects.forEach((project) => {
         const btn = document.createElement('button');
         btn.dataset.id = project.id;
@@ -117,6 +139,38 @@ function storeTaskInfo() {
         project.addTask(task);
         allTasks.addTask(task);
     }
+}
+
+function storeEditInfo(e) {
+    const taskId = e.target.dataset.id;
+    const task = findTask(currentProject, taskId);
+    console.log(task);
+
+    // newTitleInput.value = task.title;
+    // newDateInput.value = task.dueDate;
+    // newNotesInput.value = task.notes;
+
+    const title = newTitleInput.value;
+    const priority = selectPriority();
+    const dueDate = newDateInput.value;
+    const notes = newNotesInput.value;
+
+    if (title.trim().length === 0 || dueDate.trim().length === 0) {
+        return;
+    }
+
+    task.editTodo(title, priority, dueDate, notes);
+    // console.log(title);
+}
+
+const deleteTask = (e) => {
+    const task = e.target.dataset.id;
+
+    projects.forEach((project) => {
+        if (project.todos.find(todo => todo.id === task)) {
+            project.deleteTodo(task);
+        }
+    })
 }
 
 function storeProjectInfo() {
